@@ -17,21 +17,18 @@ export default function Home() {
     try {
       // api for age
       const ageResponse = await axios.get(`https://api.agify.io?name=${name}`);
-      console.log(ageResponse);
       setAge(ageResponse.data.age);
 
       // api for gender
       const genderResponse = await axios.get(
         `https://api.genderize.io?name=${name}`
       );
-      console.log(genderResponse);
       setGender(genderResponse.data.gender);
 
       // api for country
       const countryResponse = await axios.get(
         `https://api.nationalize.io?name=${name}`
       );
-      console.log(countryResponse);
       const countries = countryResponse.data.country.map((c) => c.country_id);
       setCountry(countries.join(", "));
     } catch (error) {
